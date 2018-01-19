@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Promise.race</title>
+</head>
+<body>
+<h1>ES6 Promise.race</h1>
+
+<script type="module">
+    import getJSON from './getJSON.js'
+
+    {
+        let urls = ['./data.json', './data1.json'];
+        let promises = [getJSON(urls[0]), getJSON(urls[1])];
+        Promise.race(promises)
+            .then(json => console.log('Response:', json))
+            .catch(error => console.error(error));
+    }
+    
+</script>
+
+</body>
+</html>

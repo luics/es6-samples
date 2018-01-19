@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Promise</title>
+</head>
+<body>
+<h1>ES6 Promise</h1>
+
+<script type="module">
+    import getJSON from './getJSON.js'
+
+    {
+        let url = './data.json';
+        getJSON(url).then(
+            json => console.log(url, 'Response:', json),
+            error => console.error(url, error)
+        );
+    }
+
+    /** These 3 call are equal */
+    {
+        let url = './data2.json';
+        getJSON(url).then(
+            json => console.log(url, 'Response:', json),
+            error => console.error(url, error)
+        );
+
+        getJSON(url)
+            .then(json => console.log(url, 'Response:', json))
+            .then(null, error => console.error(url, error));
+
+        getJSON(url)
+            .then(json => console.log(url, 'Response:', json))
+            .catch(error => console.error(url, error));
+    }
+
+</script>
+    
+</body>
+</html>

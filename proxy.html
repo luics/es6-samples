@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Proxy</title>
+</head>
+<body>
+<h1>ES6 Proxy</h1>
+
+<script type="module">
+    // @see http://es6.ruanyifeng.com/#docs/proxy
+    let obj = new Proxy({}, {
+        get: function(target, key, receiver) {
+            console.log(`getting ${key}!`);
+            return Reflect.get(target, key, receiver);
+        },
+        set: function(target, key, value, receiver) {
+            console.log(`setting ${key}!`);
+            return Reflect.set(target, key, value, receiver);
+        }
+    });
+
+    obj.count = 1;
+    ++obj.count
+</script>
+
+</body>
+</html>

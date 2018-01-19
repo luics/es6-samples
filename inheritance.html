@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Inheritance</title>
+</head>
+<body>
+<h1>ES6 Inheritance</h1>
+
+<script>
+    class Shape {
+        getArea() {
+            console.warn("NOT IMPLEMENTED")
+        }
+    }
+
+    class Rect extends Shape {
+        constructor(width, height) {
+            super()
+            this.width = width
+            this.height = height
+        }
+
+        getArea() {
+            return this.width * this.height
+        }
+
+        toString() {
+            return `Rect(${this.width} x ${this.height})`
+        }
+    }
+
+    class Circle extends Shape {
+        constructor(radius) {
+            super()
+            this.radius = radius
+        }
+
+        getArea() {
+            return Math.PI * this.radius * this.radius
+        }
+
+        toString() {
+            return `Circle(radius=${this.radius})`
+        }
+    }
+
+    let rect = new Rect(1, 2)
+    let circle = new Circle(1)
+    console.log(rect, 'area is', rect.getArea())
+    console.log(circle, 'area is', circle.getArea())
+</script>
+
+</body>
+</html>

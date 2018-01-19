@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Reflect</title>
+</head>
+<body>
+<h1>ES6 Reflect</h1>
+
+<script type="module">
+    // @see http://es6.ruanyifeng.com/#docs/reflect#Reflect-gettarget-name-receiver
+    let myObject = {
+        foo: 1,
+        bar: 2,
+        get baz() {
+            return this.foo + this.bar;
+        },
+    };
+
+    let myReceiverObject = {
+        foo: 4,
+        bar: 4,
+    };
+
+    console.log(Reflect.get(myObject, 'baz', myReceiverObject)) // 8
+</script>
+
+</body>
+</html>

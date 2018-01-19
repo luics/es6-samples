@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6 Proxy</title>
+</head>
+<body>
+<h1>ES6 Proxy</h1>
+
+<script type="module">
+    // @see http://es6.ruanyifeng.com/#docs/proxy
+    let person = {
+        name: "luics"
+    };
+
+    let proxy = new Proxy(person, {
+        get: function(target, property) {
+            if (property in target) {
+                return target[property];
+            }
+            else {
+                throw new ReferenceError("Property \"" + property + "\" does not exist.");
+            }
+        }
+    });
+
+    console.log(proxy.name)
+    console.log(proxy.age)
+</script>
+
+</body>
+</html>
